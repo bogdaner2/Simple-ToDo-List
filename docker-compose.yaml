@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  todo_list:
+    container_name: todo_list
+    restart: always
+    build: ./
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    links:
+      - mongo
+  mongo:
+    image: mongo:latest
+    container_name: "mongo"
+    ports:
+      - "27017:27017"
