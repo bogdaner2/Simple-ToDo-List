@@ -3,13 +3,14 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const db = () => {
-	mongoose.connect(process.env.MONGO_DB_CONNECTION);
+	const connectionString = process.env.MONGO_DB_CONNECTION;
+	mongoose.connect(connectionString,  { useNewUrlParser: true });
 
 	mongoose.set('debug', true);
 	
 	mongoose.connection.on('connected',  () => {
 		this.state = 'connected';
-		console.log('Mongoose default connection open to ' + config.db.uri);
+		console.log('Mongoose default connection open to ' + connectionString);
 	});
 
 	mongoose.connection.on('error', (err) => {
