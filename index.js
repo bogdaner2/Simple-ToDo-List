@@ -8,7 +8,7 @@ require('./app/database')();
 
 // init sockets
 const io = require('socket.io')(server);
-const sockets = require("./app/sockets").default(io);
+const sockets = require("./app/sockets")(io);
 
 app.get('/', (req, res) => res.send('Simple To Do List. Utilized express, mongoose, socket.io'));
   
