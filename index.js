@@ -5,11 +5,10 @@ const server = require('http').Server(app);
 
 // connect to database
 require('./app/database')();
-
+//register routes
+require('./app/routes/routes')(app);
 // init sockets
-const io = require('socket.io')(server);
-const sockets = require("./app/sockets")(io);
+const io = require("socket.io")(server);
+require("./app/sockets")(io);
 
-app.get('/', (req, res) => res.send('Simple To Do List. Utilized express, mongoose, socket.io'));
-  
 app.listen(process.env.SERVER_PORT || 3000, () => console.log(`Server starts on ${process.env.SERVER_PORT || 3000} port`));
