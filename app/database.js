@@ -4,9 +4,8 @@ mongoose.Promise = global.Promise;
 
 const db = () => {
 	const connectionString = process.env.MONGO_DB_CONNECTION;
+	
 	mongoose.connect(connectionString,  { useNewUrlParser: true });
-
-	mongoose.set('debug', true);
 	
 	mongoose.connection.on('connected',  () => {
 		this.state = 'connected';
