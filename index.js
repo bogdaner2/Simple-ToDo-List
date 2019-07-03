@@ -4,7 +4,7 @@ const app = express();
 const server = require('http').Server(app);
 
 // connect to database
-require('./app/database')();
+require('./app/data-access-layer/database')();
 //register routes
 require('./app/routes/routes')(app);
 // init sockets
